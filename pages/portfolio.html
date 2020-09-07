@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1,shrink-to-fit=no"
+    />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <title>Simon Xu</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="aboutMe.html">AboutMe</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="portfolio.html">Portfolio</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="container portfolio">
+      <div class="row">
+        <div class="col-xs-12 col-lg-12">
+          <h2 class="portfolio-h2">Projects</h2>
+          <hr />
+        </div>
+      </div>
+      <div class="projects row">
+        <!-- <div class="col-xs-12 col-md-6 col-lg-4"> -->
+    
+              <!-- <h5 class="card-title">CodingResourceLibrary</h5>
+              <a
+                href="#"
+                target="_blank"
+                class="btn btn-sm"
+                >Github page</a
+              >
+              <a
+              href="https://github.com/doriwang/Coding-Resource-Library"
+              target="_blank"
+              class="btn btn-sm"
+              >Demo</a -->
+            <!-- > -->
+         
+        </div>
+      </div>
+
+    <footer>
+      <div class="fixed-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p>
+                <a class="email" href="mailto:xulan20907@gmail.com" style="color: darkblue;">
+                  xulan20907@gmail.com
+                </a>
+                <a href="www.linkedin.com/in/lan-xu-b51997ba/" target="_blank">
+                  <i class="fa fa-linkedin" style="font-size: 30px; color: lightslategray;"></i>
+                </a>
+                <a href="https://github.com/Simon-Xu-Lan" target="_blank">
+                  <i class="fa fa-github-square" style="font-size: 30px; color: lightslategray;"></i>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      $.ajax({
+          url: "https://api.github.com/users/Simon-Xu-Lan/repos",
+          type: "GET"
+      }).then(res => {
+          let projects = $(".projects")
+          for (i = 0; i < res.data.length; i++) {
+              let card = $('<div class="col-xs-12 col-md-6 col-lg-4"></div>');
+              let title = $('<h5 class="card-title">' + res.data[i].name + '</h5>')
+              let githubPage = $('<a href=' + res.data[i].html_url + ' target="_blank" class="btn btn-sm">Github page</a>');
+              let demo = $('<a href=' + res.data[i].homepage + ' target="_blank" class="btn btn-sm">Demo</a>');
+
+              card.append(title, githubPage, demo);
+              projects.append(card);
+          }
+      });
+    </script>
+  </body>
+</html>
